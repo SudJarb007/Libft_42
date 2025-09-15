@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnouvape <pnouvape@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/15 14:47:50 by pnouvape          #+#    #+#             */
+/*   Updated: 2025/09/15 14:47:58 by pnouvape         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    int idx;
+	int	idx;
 
-    idx = 0;
-    while (s[idx] != '\0')
-    {
-        write(fd , &s[idx], 1);
-        idx++;
-    }
+	idx = 0;
+	while (s[idx] != '\0')
+	{
+		write(fd, &s[idx], 1);
+		idx++;
+	}
 }

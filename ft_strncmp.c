@@ -1,28 +1,27 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnouvape <pnouvape@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/15 15:22:28 by pnouvape          #+#    #+#             */
+/*   Updated: 2025/09/15 19:56:44 by pnouvape         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_strncmp(const char *s1, const char *s2, int n)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, int n)
 {
-    int idx;
+	int	idx;
 
-    idx = 0;
-    if (n == 0)
-        return (0);
-    while ((idx < n) && (s1[idx] != '\0'|| s2[idx] != '\0'))
-    {
-        if ((unsigned char)s1[idx] != (unsigned char)s2[idx])
-            return ((unsigned char)s1[idx] - (unsigned char)s2[idx]);
-        idx++;
-    }
-    return (0);
-}
-
-int main(void)
-{
-    char s1[] = "asdfgh";
-    char s2[] = "Asdfgh";
-    int n = 5;
-
-    int test = ft_strncmp(s1, s2, n);
-    printf("%d", test);
-
+	idx = 0;
+	if (n == 0)
+		return (0);
+	while ((s1[idx] == s2[idx]) && (idx < n))
+		idx++;
+	if (idx == n)
+		return (0);
+	return ((unsigned char)s1[idx] - (unsigned char)s2[idx]);
 }
