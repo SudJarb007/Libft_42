@@ -14,17 +14,17 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
-	int		idx;
-
-	str = ft_itoa(n);
-	idx = 0;
-	if (str == NULL)
-		return ;
-	while (str[idx] != '\0')
+	if (n == -2147483648)
 	{
-		write(fd, &str[idx], 1);
-		idx++;
+		write(fd, "-2147483648", 11);
+		return;
 	}
-	free(str);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = (-1)*(n);
+	}
+	else if (n >= 10)
+		ft_putnbr_fd((n / 10), fd);
+	ft_putchar_fd((n % 10 + '0'), fd);
 }

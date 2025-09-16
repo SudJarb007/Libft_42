@@ -24,7 +24,6 @@ int	ft_isdigit(int c)
 //     char str[] = "a45sdfgh";
 //     int idx;
 //     int test;
-
 //     idx = 0;
 //     while (str[idx] != '\0')
 //     {

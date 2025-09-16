@@ -12,41 +12,28 @@
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, char *src, int n)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	len_dst;
 	size_t	len_src;
-	size_t	idx;
+	size_t	i;
+	// size_t	j;
 
 	len_dst = 0;
 	len_src = 0;
-	idx = 0;
+	i = 0;
 	len_dst = ft_strlen(dst);
 	len_src = ft_strlen(src);
-	if (len_dst > n)
-		return (len_src + n);
-	while (src[idx] != '\0' && (len_dst + idx) < n - 1)
+	if (len_dst >= dstsize)
+		len_dst = dstsize;
+	if ((len_dst < dstsize + 1) && (dstsize > 0))
 	{
-		dst[len_dst + idx] = src[idx];
-		idx++;
+		while (src[i] != '\0' && (len_dst + i) < (dstsize - 1))
+		{
+			dst[len_dst + i] = src[i];
+			i++;
+		}
 	}
-	dst[len_dst + idx] = '\0';
+	dst[len_dst + i] = '\0';
 	return (len_dst + len_src);
-}
-
-#include <bsd/string.h>
-#include <stdio.h>
-int main(void)
-{
-    // char dst[] = "asdfgh";
-    // char src[] = "AAAHHHSSS";
-	char dest[30]; memset(dest, 0, 30);
-	char dest_real[30]; memset(dest_real, 0, 30);
-	char * src = (char *)"AAAAAAAAA";
-    int n = -1;
-
-    printf("ft_ : %d\n",ft_strlcat(dest, src, n));
-	printf("%s",dest);
-	printf("strlcar_real : %zu\n",strlcat(dest_real, src, n));
-	printf("%s",dest_real);
 }

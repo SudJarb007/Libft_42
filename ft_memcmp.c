@@ -29,6 +29,7 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	}
 	return (0);
 }
+
 // int	main(void)
 // {
 // 	char s1[] = "Hello World";

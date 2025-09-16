@@ -35,7 +35,7 @@ char	*total(long *tmp_num, int *count, int *sign, long num)
 		num = num / 10;
 		(*count)++;
 	}
-	return ((char *)malloc(sizeof(char) * (*count + 1)));
+	return ((char *)malloc(sizeof(char) * (*count + 1 + *sign)));
 }
 
 char	*ft_itoa(int n)
@@ -51,7 +51,7 @@ char	*ft_itoa(int n)
 		return (NULL);
 	if (sign > 0)
 		str_num[0] = '-';
-	else if (str_num == 0)
+	else if (n == 0)
 		str_num[0] = '0';
 	i = sign + count;
 	str_num[i] = '\0';
@@ -64,85 +64,35 @@ char	*ft_itoa(int n)
 	return (str_num);
 }
 
-#include <stdlib.h>
-#include <unistd.h>
-
-void	ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
-
-int		main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-	{
-		char *res = ft_itoa(0);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 2)
-	{
-		char *res = ft_itoa(9);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 3)
-	{
-		char *res = ft_itoa(-9);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 4)
-	{
-		char *res = ft_itoa(10);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 5)
-	{
-		char *res = ft_itoa(-10);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 6)
-	{
-		char *res = ft_itoa(8124);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 7)
-	{
-		char *res = ft_itoa(-9874);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 8)
-	{
-		char *res = ft_itoa(543000);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 9)
-	{
-		char *res = ft_itoa(-2147483648LL);
-		ft_print_result(res);
-		free(res);
-	}
-	else if (arg == 10)
-	{
-		char *res = ft_itoa(2147483647);
-		ft_print_result(res);
-		free(res);
-	}
-	return (0);
-}
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <unistd.h>
+// #include <limits.h>
+// #include <string.h>
+// void run_test(int test_num_base, int number_to_test)
+// {
+//     char *my_result = ft_itoa(number_to_test);
+//     char real_result[12]; 
+//     sprintf(real_result, "%d", number_to_test);
+//     printf("--- Testing: %d ---\n", number_to_test);
+//     printf("     ft_itoa result: \"%s\"\n", my_result);
+//     printf("    Official result: \"%s\"\n", real_result);
+//     int content_check = strcmp(my_result, real_result);
+//     printf("     [%2d] Content check: %s\n", test_num_base, (content_check == 0) ? "✅ PASS" : "❌ FAIL");
+//     size_t my_len = strlen(my_result);
+//     size_t real_len = strlen(real_result);
+//     printf("     [%2d] Length check:  %s (expected %zu, got %zu)\n\n", test_num_base + 1, (my_len == real_len) ? "✅ PASS" : "❌ FAIL", real_len, my_len);
+//     free(my_result);
+// }
+// int main(void)
+// {
+//     printf("### Starting ft_itoa Test (12 checks) ###\n\n");
+//     run_test(1, INT_MAX);
+//     run_test(3, INT_MIN);
+//     run_test(5, 0);
+//     run_test(7, 1);
+//     run_test(9, -1);
+//     run_test(11, 42);
+//     printf("### Test Finished ###\n");
+//     return (0);
+// }
